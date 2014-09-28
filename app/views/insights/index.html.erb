@@ -1,22 +1,25 @@
 <ul>
 <% @insights.each do |insight| %>
   <li>
-    <div><%= insight.body %></div>
     <div>
-      <%= form_for [insight, @tag] do |f| %>
-        <div>
-          <%= f.label :name %>
-          <%= f.text_area :name %>
-        </div>
-        <div>
-          <%= f.submit "Submit a tag" %>
-        </div>
+      <%= insight.body %>
+      <div>
+      <%= insight.tag_list %>
+      </div>
+    </div>
+    <div class="field">
+      <%= form_for insight do |f| %>
+    <div>
+      <%= f.label :tag_list, "Add tags (separated by commas)" %><br />
+      <%= f.text_field :tag_list %>
+      <%= f.submit "Add tags" %>
+    </div>
       <% end %>
     </div>
-
-
+</div>
   </li>
 <% end %>
 </ul>
+
 
 

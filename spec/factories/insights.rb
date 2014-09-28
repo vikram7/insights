@@ -1,8 +1,6 @@
 FactoryGirl.define do
   factory :insight do
-    sequence :body do |n|
-      "this is an insight #{n}"
-    end
+    body "The bash operator is great for ActiveRecord"
 
     association :user
   end

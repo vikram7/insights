@@ -16,7 +16,7 @@ Welcome to Insights
       <%= form_for insight do |f| %>
     <div>
       <%= f.label :tag_list, "Add tags (separated by commas)" %><br />
-      <%= f.text_field :tag_list %>
+      <%= f.text_field :tag_list, placeholder: "", value: "" %>
       <%= f.submit "Add tags" %>
     </div>
       <% end %>

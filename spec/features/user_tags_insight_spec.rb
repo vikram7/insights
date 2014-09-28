@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-feature "User writes insight" do
+feature "User tags insight" do
 
-  scenario 'authenticated user writes an insight' do
-
+  scenario 'authenticated user adds tag to insight' do
     insight = FactoryGirl.create(:insight)
 
     visit new_user_session_path
@@ -12,9 +11,9 @@ feature "User writes insight" do
     click_on "Log in"
     click_on "Submit Insight"
     fill_in "Body", with: insight.body
-
     click_on "Post your insight!"
-    expect(page).to have_content("Insight added successfully!")
+    fill_in "insight_tag_list", with: "SQL, ActiveRecord"
+    click_on "Add tags"
   end
 
 end

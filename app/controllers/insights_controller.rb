@@ -1,6 +1,10 @@
 class InsightsController < ApplicationController
   def index
-    @insights = Insight.order(created_at: :desc)
+    if params[:tag]
+      @insights = Insight.order(created_at: :desc).tagged_with(params[:tag])
+    else
+      @insights = Insight.order(created_at: :desc)
+    end
   end
 
   def new
@@ -11,7 +15,7 @@ class InsightsController < ApplicationController
     @insight = Insight.create(insight_params)
     @insight.user = current_user
 
-    if @insight.save
+    if @insight.body != ''
       flash[:notice] = "Insight added successfully!"
       redirect_to insights_path
     else
@@ -20,8 +24,19 @@ class InsightsController < ApplicationController
     end
   end
 
+  def update
+    @insight = Insight.find(params[:id])
+    @insight.tag_list.add(insight_params[:tag_list])
+
+    if @insight.save
+      flash[:notice] = "Tag(s) successfully added"
+      redirect_to insights_path
+    end
+  end
+
   private
   def insight_params
-    params.require(:insight).permit(:body)
+    params.require(:insight).permit(:body, :tag_list)
   end
 end
+

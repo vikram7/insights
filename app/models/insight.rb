@@ -1,6 +1,6 @@
 class Insight < ActiveRecord::Base
-  has_many :tags
-  belongs_to :tag
+  acts_as_taggable
+
   belongs_to :user
 
   validates :body,

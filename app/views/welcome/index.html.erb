@@ -1,4 +1,29 @@
 Welcome to Insights
+<div>
+<ul>
+<% @insights.each do |insight| %>
+  <li>
+    <div>
+      <%= insight.body %>
+      <div>
+      <%= insight.tag_list %>
+      </div>
+      <div>
+      Submitted by <%= insight.user.username %>
+      </div>
+    </div>
+    <div class="field">
+      <%= form_for insight do |f| %>
+    <div>
+      <%= f.label :tag_list, "Add tags (separated by commas)" %><br />
+      <%= f.text_field :tag_list %>
+      <%= f.submit "Add tags" %>
+    </div>
+      <% end %>
+    </div>
+</div>
+  </li>
+<% end %>
+</ul>
 
-<%= link_to "Sign up", new_user_registration_path %>
-<%= link_to "Sign in", new_user_session_path %>
+</div>

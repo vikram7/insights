@@ -1,0 +1,31 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">Insights</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+
+    <ul class="left">
+      <li class="active">
+        <% if !user_signed_in? %>
+          <%= link_to 'Sign in to submit an Insight', new_user_session_path %>
+        <% end %>
+      </li>
+
+      <li>
+      <%= form_tag(insights_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search insights" %></li>
+        <li><%= submit_tag "Search", :title => nil %></li>
+      <% end %>
+    </ul>
+
+    <ul class="right">
+        <% if user_signed_in? %>
+        <li class="active"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <% end %>
+    </ul>
+  </section>
+</nav>

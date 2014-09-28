@@ -1,0 +1,9 @@
+<%= form_for @insight do |f| %>
+
+  <div>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+  </div>
+
+  <div><%= f.submit "Post your insight!" %></div>
+<% end %>

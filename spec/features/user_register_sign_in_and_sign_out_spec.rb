@@ -29,9 +29,8 @@ feature "User registration, sign in and sign out" do
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_on "Log in"
-    save_and_open_page
     click_on "Sign out"
-    expect(page).to have_content( "Signed out successfully.")
+    expect(page).to have_content("Signed out successfully.")
   end
 
 end

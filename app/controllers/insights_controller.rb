@@ -1,7 +1,9 @@
 class InsightsController < ApplicationController
 
   def index
-    if params[:tag]
+    if params[:search]
+      @insights = Insight.search(params[:search]).order(created_at: :desc)
+    elsif params[:tag]
       @insights = Insight.order(created_at: :desc).tagged_with(params[:tag])
     else
       @insights = Insight.order(created_at: :desc)

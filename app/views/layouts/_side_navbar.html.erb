@@ -1,6 +1,6 @@
 <ul class="side-nav">
 Tags
   <% Insight.tag_counts_on(:tags).each do |tag, css_class| %>
-    <div class="sidebar_tags"><%= link_to tag.name, "#{tag.name}" %> | <%= tag.taggings_count %></div>
+    <div class="sidebar_tags"><%= link_to tag.name, "/tags/#{tag.name}" %> | <%= tag.taggings_count %></div>
   <% end %>
 </ul>

@@ -7,4 +7,9 @@ class Insight < ActiveRecord::Base
     presence: true
   validates :user,
     presence: true
+
+  def self.search(query)
+    where("body ilike ?", "%#{query}%")
+  end
+
 end

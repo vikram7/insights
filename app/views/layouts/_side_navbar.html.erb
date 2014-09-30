@@ -1,0 +1,6 @@
+<ul class="side-nav">
+Tags
+  <% Insight.tag_counts_on(:tags).each do |tag, css_class| %>
+    <li><%= tag.name %> | <%= tag.taggings_count %></li>
+  <% end %>
+</ul>

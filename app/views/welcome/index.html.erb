@@ -1,29 +1,21 @@
-Welcome to Insights
 <div>
-<ul>
 <% @insights.each do |insight| %>
-  <li>
+  <div class="insight_block">
     <div>
-      <%= insight.body %>
-      <div>
-      <%= insight.tag_list %>
-      </div>
-      <div>
-      Submitted by <%= insight.user.username %>
-      </div>
+      <% insight.tag_list.map! {|x| x.split(',')}.flatten! %>
+      <div class="insight"><%= insight.body %></div>
+      <% insight.tag_list.each do |tag| %>
+        <div style="display: inline" class="tag"><%= tag %></div>
+      <% end %>
+      <br>
+      <div class="small">Submitted by <%= insight.user.username %></div>
     </div>
     <div class="field">
       <%= form_for insight do |f| %>
-    <div>
-      <%= f.label :tag_list, "Add tags (separated by commas)" %><br />
-      <%= f.text_field :tag_list, placeholder: "", value: "" %>
-      <%= f.submit "Add tags" %>
-    </div>
+        <%= f.submit "Add tags" %>
+        <%= f.text_field :tag_list, placeholder: "Add tags (separated by commas)", value: "" %>
       <% end %>
     </div>
-</div>
-  </li>
+  </div>
 <% end %>
-</ul>
-
 </div>

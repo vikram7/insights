@@ -1,0 +1,36 @@
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }
+
+#content {
+    position: relative;
+    width: 100%;
+}
+#sidebar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 240px;
+}
+#main {
+    position: relative;
+    margin-left: 250px;
+}
+
+.insight_block {
+  margin-bottom: 10px;
+}
+
+.small {
+  font-size: 0.6em;
+}
+
+.tag {
+  font-size: 0.8em;
+}
+
+.insight {
+  font-size: 1.0em;
+}

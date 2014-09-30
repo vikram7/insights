@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Launcher Insights" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -13,14 +13,25 @@
 
   <body>
     <%= render 'layouts/main_navbar' %>
-    <%= flash[:notice] %>
+    <% if flash.any? %>
+      <div class="alert-box secondary">
+        <div class="container">
+          <%= flash[:notice] %>
+        </div>
+      </div>
+    <% end %>
 
-    <div class="row">
-      <div class="small-12 columns">
-        <%= yield %>
+
+    <div id="content">
+      <div id="sidebar">
+        <%= render '/layouts/side_navbar' %>
+      </div>
+      <div class="row">
+        <div class="small-12 columns">
+          <%= yield %>
+        </div>
       </div>
     </div>
-
     <%= javascript_include_tag "application" %>
   </body>
 </html>

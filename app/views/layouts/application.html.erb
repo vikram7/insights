@@ -13,25 +13,35 @@
 
   <body>
     <%= render 'layouts/main_navbar' %>
-    <% if flash.any? %>
-      <div class="alert-box secondary">
-        <div class="container">
-          <%= flash[:notice] %>
-        </div>
-      </div>
-    <% end %>
 
-
-    <div id="content">
-      <div id="sidebar">
-        <%= render '/layouts/side_navbar' %>
+    <div class="row">
+      <div class="large-9 push-3 columns">
+        <%= yield %>
       </div>
+
+      <div class="large-3 pull-9 columns">
+        <ul class="side-nav">
+         <%= render 'layouts/side_navbar' %>
+        </ul>
+      </div>
+    </div>
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr/>
       <div class="row">
-        <div class="small-12 columns">
-          <%= yield %>
+        <div class="large-6 columns">
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
         </div>
       </div>
     </div>
-    <%= javascript_include_tag "application" %>
+  </footer>
+
+      <%= javascript_include_tag "application" %>
   </body>
 </html>

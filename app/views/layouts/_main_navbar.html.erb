@@ -7,26 +7,28 @@
   </ul>
 
   <section class="top-bar-section">
-
     <ul class="left">
-      <li class="active">
-        <% if !user_signed_in? %>
-          <%= link_to "Sign in to submit an Insight", new_user_session_path %>
-        <% else %>
-          <%= link_to "Submit an Insight", new_insight_path %>
-        <% end %>
+      <li>
+      <div>
+        <%= form_tag(insights_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search insights" %>
+      </div>
       </li>
 
       <li>
-      <%= form_tag(insights_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search insights" %></li>
-        <li><%= submit_tag "Search", :title => nil %></li>
+        <%= submit_tag "Search", :title => nil %>
+      </li>
       <% end %>
     </ul>
 
     <ul class="right">
         <% if user_signed_in? %>
-        <li class="active"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <!-- <li class="active"><a href="/insights/new" data-reveal-id="firstModal" class="radius button">Submit an Insight&hellip;</a></li> -->
+          <!-- <li class="active"><%= link_to "Submit an Insight", new_insight_path %></li> -->
+          <li class="active"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+        <li class="active"><%= link_to "Sign in", new_user_session_path %></li>
+          <li class="active"><%= link_to "Sign up", new_user_registration_path %></li>
         <% end %>
     </ul>
   </section>

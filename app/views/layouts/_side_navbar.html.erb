@@ -1,6 +1,8 @@
-<ul class="side-nav">
-Tags
-  <% Insight.tag_counts_on(:tags).each do |tag, css_class| %>
-    <div class="sidebar_tags"><%= link_to tag.name, "/tags/#{tag.name}" %> | <%= tag.taggings_count %></div>
-  <% end %>
-</ul>
+<div class="row">
+    <ul class="side-nav">
+    Tags
+      <% Insight.tag_counts_on(:tags).sort_by {|record| -record.taggings_count}.each do |tag| %>
+        <div class="sidebar_tags"><%= link_to tag.name, "/tags/#{tag.name}" %> | <%= tag.taggings_count %></div>
+      <% end %>
+    </ul>
+</div>

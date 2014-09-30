@@ -1,19 +1,38 @@
+<br>
+<% if user_signed_in? %>
+  <div>
+  <%= form_for @insight do |f| %>
+      <%= f.label "Your Insight" %>
+      <%= f.text_area :body %>
+    <%= f.submit "Post your insight!" %>
+  <% end %>
+  </div><br>
+<% end %>
+
 <div>
 <% @insights.each do |insight| %>
   <div class="insight_block">
     <div>
       <% insight.tag_list.map! {|x| x.split(',')}.flatten! %>
       <div class="insight"><%= insight.body %></div>
-      <% insight.tag_list.each do |tag| %>
-        <div style="display: inline" class="tag"><%= tag %></div>
+        <div style="display: inline" class="tag"><%= insight.tag_list.join(', ') %></div>
+      <div class="small">Submitted by <%= insight.user.username %>
+      <% if (Time.now - insight.created_at) <= 60 %>
+        <%= (Time.now - insight.created_at).round(0) %> seconds ago </div>
+      <% elsif (Time.now - insight.created_at) > 60 &&  (Time.now - insight.created_at) <= 3600 %>
+        <%= ((Time.now - insight.created_at)/60).round(0) %> minute(s) ago</div>
+      <% elsif (Time.now - insight.created_at) > 3600 && (Time.now - insight.created_at) <= 86400 %>
+        <%= ((Time.now - insight.created_at)/3600).round(0) %> hour(s) ago</div>
+      <% elsif (Time.now - insight.created_at) > 86400 %>
+        <%= ((Time.now - insight.created_at)/86400).round(0) %> day(s) ago</div>
       <% end %>
-      <br>
-      <div class="small">Submitted by <%= insight.user.username %></div>
     </div>
+
     <div class="field">
+    <% if user_signed_in? %>
       <%= form_for insight do |f| %>
-        <%= f.submit "Add tags" %>
-        <%= f.text_field :tag_list, placeholder: "Add tags (separated by commas)", value: "" %>
+        <%= f.text_field :tag_list, placeholder: "Add tags (separated by commas)", value: "" %><%= f.submit "Add tags" %>
+        <% end %>
       <% end %>
     </div>
   </div>

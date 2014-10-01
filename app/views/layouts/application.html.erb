@@ -13,6 +13,13 @@
 
   <body>
     <%= render 'layouts/main_navbar' %>
+    <% if flash.any? %>
+      <div class="alert-box secondary">
+        <div class="container">
+          <%= flash[:notice] %>
+        </div>
+      </div>
+    <% end %>
 
     <div class="row">
       <div class="large-9 push-3 columns">

@@ -9,11 +9,9 @@ feature "User tags insight" do
     fill_in "Email", with: insight.user.email
     fill_in "Password", with: insight.user.password
     click_on "Log in"
-    click_on "Submit Insight"
-    fill_in "Body", with: insight.body
-    click_on "Post your insight!"
     fill_in "insight_tag_list", with: "SQL, ActiveRecord"
     click_on "Add tags"
+    #expect page to have something here
   end
 
 end

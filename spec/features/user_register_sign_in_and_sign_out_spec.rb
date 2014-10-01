@@ -10,7 +10,7 @@ feature "User registration, sign in and sign out" do
     fill_in "Username", with: user.username
     fill_in "Password", with: user.password
     fill_in "Password confirmation", with: user.password
-    click_on "Sign up"
+    click_button "Sign up"
     expect(page).to have_content("Welcome! You have signed up successfully.")
   end
 

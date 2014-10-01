@@ -3,6 +3,9 @@ Launcher Insights allows students to share insights or discoveries they've had t
 Todos:
 - Reddit "Karma" like feature for insights to incentivize usage by students (look into acts-as-votable Gem)
 - Search by tags in addition to insights
+- Add ability to sign in with github
+- Ability to remove posts
+- Ability to remove tags
 - Profile page for each user
 - Admin namespacing
 - Feature and Unit tests

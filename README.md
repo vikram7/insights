@@ -6,6 +6,10 @@ Screenshots from Mobile:
 
 ![alt tag](image_2.png)
 
+Screenshots from Desktop:
+
+![alt tag](image_3.png)
+
 Current features:
 - Ability for user to add an insight
 - Ability for any user to tag any insight

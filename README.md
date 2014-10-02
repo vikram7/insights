@@ -1,4 +1,6 @@
-Launcher Insights allows students to share insights or discoveries they've had to enhance learning outcomes. Launchers can post insights and allow anyone to tag them, search for insights and browse insights by tags. Launcher Insights can be accessed at the following URL: http://launcher-insights.herokuapp.com
+Launcher Insights allows students to share insights or discoveries they've had to enhance learning outcomes. Launchers can post insights and allow anyone to tag them, search for insights and browse insights by tags. Launcher Insights can be accessed at the following URL:
+
+http://launcher-insights.herokuapp.com
 
 Screenshots from Mobile:
 
